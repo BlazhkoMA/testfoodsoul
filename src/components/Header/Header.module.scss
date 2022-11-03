@@ -1,0 +1,9 @@
+.header{
+  padding: 20px 30px;
+  border-bottom: 1px solid $border;
+  &_title{
+    font-weight: 700;
+    color: $text;
+    font-size: 24px;
+  }
+}

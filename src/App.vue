@@ -1,26 +1,22 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <DefaultLayout>
+    <SearchComponent/>
+    <ResultListComponent/>
+  </DefaultLayout>
 </template>
 
-<script>
-import HelloWorld from './components/HelloWorld.vue'
-
-export default {
-  name: 'App',
-  components: {
-    HelloWorld
-  }
-}
-</script>
-
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Roboto', sans-serif;
 }
 </style>
+
+<script setup lang="ts">
+import DefaultLayout from "@/Layouts/DefaultLayout.vue";
+import SearchComponent from "@/components/SearchComponent/SearchComponent.vue";
+import ResultListComponent from "@/components/ResultListComponent/ResultListComponent.vue";
+</script>
+

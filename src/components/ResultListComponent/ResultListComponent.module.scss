@@ -1,0 +1,10 @@
+.result_list{
+  display: flex;
+  flex-direction: column;
+  &_empty{
+    text-align: center;
+    color: $text;
+    font-size: 24px;
+    font-weight: 500;
+  }
+}
