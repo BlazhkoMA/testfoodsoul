@@ -1,5 +1,6 @@
 import { defineStore, acceptHMRUpdate } from 'pinia'
 import {API_URL} from "@/config/config";
+import {searchStateEnum, StateInterface} from "@/store/searchStoreTypes";
 
 async function apiFetch(query: string) {
     const response = await fetch(API_URL + query)
@@ -8,25 +9,22 @@ async function apiFetch(query: string) {
         return data.data.items
     }
     return []
+}
 
-}
-interface item {
-    name: string,
-    type: string
-}
 export const useSearchStore = defineStore({
     id: 'search',
     state: () => ({
         items: [],
-        searchState: 'start'
-    }),
+        searchState: searchStateEnum.START,
+        defaultValue: 'testing ssr',
+    } as StateInterface),
 
     actions: {
         async getItems(query: string) {
             const data = await apiFetch(query)
             this.$patch({
                 items: data,
-                searchState: 'finish'
+                searchState: searchStateEnum.FINISH
             })
         },
         clearItems () {
@@ -36,7 +34,7 @@ export const useSearchStore = defineStore({
         },
         startInput () {
             this.$patch({
-                searchState: 'loading'
+                searchState: searchStateEnum.LOADING
             })
         },
     },

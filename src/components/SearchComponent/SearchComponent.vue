@@ -9,7 +9,7 @@
 </template>
 
 <script setup lang="ts">
-import {ref, watch} from "vue";
+import {onMounted, ref, watch} from "vue";
 
 import classes from '@/components/SearchComponent/SearchComponent.module.scss'
 import InputComponent from "@/components/Controls/InputComponent.vue";
@@ -17,11 +17,18 @@ import {useSearchStore} from "@/store/search";
 
 const search = useSearchStore()
 
-const searchQuery = ref('')
+const searchQuery = ref(search.defaultValue)
 const interval = ref(0)
 const changeField = (value: string) => {
   searchQuery.value = value
 }
+
+onMounted(() => {
+  if(searchQuery.value){
+    search.startInput()
+    search.getItems(searchQuery.value)
+  }
+})
 
 watch(searchQuery, () => {
   search.startInput()

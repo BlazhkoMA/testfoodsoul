@@ -8,10 +8,19 @@
 <script setup lang="ts">
 import classes from '@/components/ResultItemComponent/ResultItemComponent.module.scss'
 import {defineProps} from "vue";
+import {propsInterface} from "@/components/ResultItemComponent/ResultItemComponentTypes";
 
-const props = defineProps({
-      name: String,
-      type: String
+
+
+const props: propsInterface = defineProps({
+      name: {
+        type: String,
+        required: true
+      },
+      type: {
+        type: String,
+        required: true
+      },
     }
 )
 

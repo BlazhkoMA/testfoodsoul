@@ -1,7 +1,7 @@
 <template>
   <div :class="classes.result_list">
-    <template v-if="search.searchState !== 'start'">
-      <div v-if="search.searchState === 'loading'">
+    <template v-if="search.searchState !== searchStateEnum.START">
+      <div v-if="search.searchState === searchStateEnum.LOADING">
         <LoaderComponent/>
       </div>
       <template v-else>
@@ -18,7 +18,7 @@
 
 <script setup lang="ts">
 import classes from '@/components/ResultListComponent/ResultListComponent.module.scss'
-
+import {searchStateEnum} from "@/store/searchStoreTypes";
 import {useSearchStore} from "@/store/search";
 import ResultItemComponent from "@/components/ResultItemComponent/ResultItemComponent.vue";
 import LoaderComponent from "@/components/Loader/LoaderComponent.vue";
